@@ -1,0 +1,134 @@
+*
+  box-sizing: border-box
+
+@keyframes spin 
+  0% 
+    transform:  scale(0.8)
+  50%
+    transform: scale(1.2)
+  100% 
+    transform:  scale(0.8)
+
+body
+  display: grid
+  grid-template-rows: 1fr
+  grid-template-columns: 1fr
+  justify-content: center
+
+.root
+  display: grid 
+  grid-template-columns: 1fr 100px 1fr
+  grid-template-rows: 1fr 80px
+  justify-items: center
+  width: 100%
+
+.index
+  display: flex
+  justify-content: center
+  align-items: center
+
+.status-bar
+  display: grid
+  grid-template-rows: repeat(auto-fit, 100px)
+
+  .timer
+    color: white
+    font-size: 90px
+    font-weight: bold
+    text-align: center
+
+  .counter
+    color: white
+    font-size: 50px
+    font-weight: bold
+    text-align: center
+    padding-top: 40px
+
+  .status
+    color: #6cff00
+    font-size: 20px
+    font-weight: bold
+    text-align: center
+    padding-top: 20px
+
+  .point
+    color: white
+    font-size: 40px
+    font-weight: bold
+    text-align: center
+    animation: spin 2s linear infinite
+    height: 55px
+    padding-top: 20px
+
+.my-board
+  display: grid
+  grid-template-columns: 30px repeat(10, 30px)
+  grid-template-rows: repeat(10, 30px) 30px 
+
+  background-color: #ffffffc4
+  padding: 20px
+  border-radius: 7px
+
+  .cell
+    border: 1px solid #0000008a
+    width: 30px
+    height: 30px
+
+    .boat
+      background-color: #400909
+      height: 100%
+      width: 100%
+
+    .drowned
+      &::after
+        content: '🔥'
+        font-size: 1.2em
+        text-align: center
+        width: 100%
+        display: inline-block
+
+.opponent-board
+  display: grid
+  grid-template-columns: 30px repeat(10, 30px)
+  grid-template-rows: repeat(10, 30px) 30px
+  
+  background-color: #ffffffc4
+  padding: 20px
+  border-radius: 7px
+
+  .cell
+    border: 1px solid #0000008a
+    width: 30px
+    height: 30px
+    display: flex
+    align-items: center
+    justify-content: center
+
+  .miss
+    height: 40%
+    width: 40%
+    background-color: #159296
+    border-radius: 50%
+    display: inline-block
+
+  .injured
+    &::after
+      display: inline-block
+      content: "\00d7"
+      font-size: 25px
+      color: red
+
+.controls
+  width: 100%
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+  grid-column-start: 1
+  grid-column-end: 4
+
+  gap: 5px
+  padding: 10px
+  justify-content: space-between
+
+  .button
+    border-radius: 5px
+
